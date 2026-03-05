@@ -14,7 +14,7 @@ import MyAppointment from './../pages/MyAppointment';
 function AppRoutes() {
   return (
     <>
-        <Routes>
+      <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/doctor' element={<Doctor/>}/>
       <Route path='/doctor/:speciality' element={<Doctor/>}/>
