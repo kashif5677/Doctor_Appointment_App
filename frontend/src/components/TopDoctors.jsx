@@ -25,7 +25,7 @@ function TopDoctors() {
          </div>
             ))}
       </div>
-      <button onClick={()=>{navigate('/doctor'); scrollTo(0,0)}} className='bg-blue-100  text-gray-600 px-8 py-3 mt-10 rounded-3xl font-medium cursor-pointer hover:scale-107 transition-all duration-300'>More</button>
+      <button onClick={()=>{navigate('/doctors'); scrollTo(0,0)}} className='bg-blue-100  text-gray-600 px-8 py-3 mt-10 rounded-3xl font-medium cursor-pointer hover:scale-107 transition-all duration-300'>More</button>
     </div>
   )
 }

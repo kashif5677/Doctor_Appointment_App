@@ -16,8 +16,8 @@ function AppRoutes() {
     <>
       <Routes>
       <Route path='/' element={<Home/>}/>
-      <Route path='/doctor' element={<Doctor/>}/>
-      <Route path='/doctor/:speciality' element={<Doctor/>}/>
+      <Route path='/doctors' element={<Doctor/>}/>
+      <Route path='/doctors/:speciality' element={<Doctor/>}/>
       <Route path='/Login' element={<Login/>}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/contact' element={<Contact/>}/>
