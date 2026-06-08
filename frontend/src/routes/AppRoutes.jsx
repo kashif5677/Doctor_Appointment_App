@@ -8,6 +8,7 @@ import About from './../pages/About';
 import Contact from './../pages/Contact';
 import MyProfile from './../pages/MyProfile';
 import MyAppointment from './../pages/MyAppointment';
+import Appointment from './../pages/Appointment';
 
 
 
@@ -22,8 +23,8 @@ function AppRoutes() {
       <Route path='/about' element={<About/>}/>
       <Route path='/contact' element={<Contact/>}/>
       <Route path='/myprofile' element={<MyProfile/>}/>
-      <Route path='/myappointemnt' element={<MyAppointment/>}/>
-      <Route path='/myappointemnt/:docId' element={<MyAppointment/>}/>
+      <Route path='/myappointment' element={<MyAppointment/>}/>
+      <Route path='/appointment/:docId' element={<Appointment/>}/>
     </Routes>
     </>
   )

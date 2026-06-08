@@ -1,7 +1,7 @@
 import React from 'react'
 import { assets } from './../assets/assets_admin/assets';
 import { assets_frontend } from './../assets/assets_frontend/assets';
-import Appointement from './../pages/Appointement';
+import Appointement from '../pages/Appointment';
 import { useNavigate } from 'react-router-dom';
 
 function Banner() {
