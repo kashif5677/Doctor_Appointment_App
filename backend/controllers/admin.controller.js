@@ -1,5 +1,5 @@
 import validator from 'validator'
-import bycrypt from 'bcrypt'
+import bcrypt from 'bcrypt'
 import { v2 as cloudinary } from 'cloudinary'
 import DoctorModel from '../models/doctor.model.js'
 
@@ -28,12 +28,17 @@ const addDoctor = async (req, res) => {
             return res.json({ success: false, message: "Please upload image" })
         }
 
-        // hashing doctor password
-        const salt = await bycrypt.genSalt(10)
-        const hashedPassword = await bycrypt.hash(password, salt)
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(password, salt)
 
-        // upload image to cloudinary
-        const imageUpload = await cloudinary.uploader.upload(imageFile.path, { resource_type: "image" })
+        let addressObj
+        try {
+            addressObj = JSON.parse(address)
+        } catch {
+            return res.status(400).json({ success: false, message: "Invalid address format" })
+        }
+
+        const imageUpload = await cloudinary.uploader.upload(imageFile.path)
         const imageUrl = imageUpload.secure_url
 
         const doctorData = {
@@ -46,7 +51,7 @@ const addDoctor = async (req, res) => {
             experience,
             about,
             fees,
-            address: JSON.parse(address),
+            address: addressObj,
             date: Date.now()
         }
 
