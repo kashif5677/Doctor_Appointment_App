@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
 import {assets} from '../../../admin/src/assets/assets.js'
+import {useContext} from 'react'
+import {AdminContext} from '../context/AdminContext'
 
 function Login() {
 
     const [state,setState]=useState('Admin')
+
+    const {setAToken}=useContext(AdminContext)
 
 
   return (
