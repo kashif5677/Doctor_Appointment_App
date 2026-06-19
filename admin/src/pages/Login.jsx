@@ -6,8 +6,12 @@ import {AdminContext} from '../context/AdminContext'
 function Login() {
 
     const [state,setState]=useState('Admin')
+    const [email,setEmail]=useState('')
+    const [password,setPassword]=useState('')
 
     const {setAToken}=useContext(AdminContext)
+
+
 
 
   return (
