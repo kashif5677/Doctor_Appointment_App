@@ -18,7 +18,12 @@ function Login() {
             <p>Password</p>
             <input className='w-full border border-[#DADADA] rounded p-2 mt-1' type="password" required />
         </div>
-        <button>Login</button>
+        <button className='w-full bg-primary text-white p-2 rounded-md mt-3'>Login</button>
+        {
+            state=='Admin'
+            ? <p>Doctor Login? <span  onClick={()=>setState('Doctor')} className='text-primary underline cursor-pointer'>click here</span></p>
+            : <p>Admin Login? <span onClick={()=>setState('Admin')} className='text-primary underline cursor-pointer' >click here</span></p>
+        }
       </div>
     </form>
   )
