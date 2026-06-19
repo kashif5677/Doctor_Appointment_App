@@ -20,7 +20,7 @@ function Login() {
         <p className='text-2xl font-semibold m-auto'>< span className='text-primary'>{state}</span>Login</p>
         <div className='w-full'>
             <p>Email</p>
-            <input className='w-full border border-[#DADADA] rounded p-2 mt-1' type="email" required />
+            <input onClick={(e)=>setEmail(e.target.value)} className='w-full border border-[#DADADA] rounded p-2 mt-1' type="email" required />
         </div>
         <div className='w-full'>
             <p>Password</p>
