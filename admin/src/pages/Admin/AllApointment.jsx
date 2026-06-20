@@ -1,12 +1,11 @@
 import React from 'react'
 
-function Sidebar() {
+function AllApointment() {
   return (
     <div>
-      sidebar
       
     </div>
   )
 }
 
-export default Sidebar
+export default AllApointment

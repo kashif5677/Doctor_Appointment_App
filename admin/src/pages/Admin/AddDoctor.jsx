@@ -1,12 +1,11 @@
 import React from 'react'
 
-function Sidebar() {
+function AddDoctor() {
   return (
     <div>
-      sidebar
-      
+      adddoctor
     </div>
   )
 }
 
-export default Sidebar
+export default AddDoctor
