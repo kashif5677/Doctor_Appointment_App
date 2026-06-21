@@ -3,6 +3,7 @@ import { assets } from '../../assets/assets'
 import { useContext } from 'react'
 import { AdminContext } from '../../context/AdminContext'
 import { toast } from 'react-toastify'
+import axios from 'axios'
 
 function AddDoctor() {
 
@@ -46,6 +47,13 @@ function AddDoctor() {
         console.log(`${key}: ${value}`);
       })
 
+      const { data } = await axios.post(backendUrl + '/api/admin/add-doctor', formData, { headers: { aToken } })
+
+      if (data.success) {
+        toast.success(data.message)
+      } else {
+        toast.error(data.message)
+      }
     } catch (error) {
 
     }
