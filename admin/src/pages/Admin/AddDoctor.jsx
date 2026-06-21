@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { assets } from '../../assets/assets'
 import { useContext } from 'react'
 import { AdminContext } from '../../context/AdminContext'
+import { toast } from 'react-toastify'
 
 function AddDoctor() {
 
@@ -22,6 +23,11 @@ function AddDoctor() {
   const onSubmitHandler = async (e) => {
     e.preventDefault()
     try {
+
+      if (!docImg) {
+        return toast.error('Please upload doctor image')
+
+      }
 
     } catch (error) {
 
@@ -112,7 +118,7 @@ function AddDoctor() {
 
         <div>
           <p className='mt-4 mb-2'>About Doctor</p>
-          <textarea onChange={(e) => setName(e.target.value)} value={about} className="w-full px-4 pt-2 border rounded" name="text" placeholder="Education" rows={5} required />
+          <textarea onChange={(e) => setAbout(e.target.value)} value={about} className="w-full px-4 pt-2 border rounded" name="text" placeholder="Education" rows={5} required />
         </div>
 
         <button type="submit" className="bg-primary px-10 py-3 mt-4 text-white rounded-full">Add Doctor</button>
