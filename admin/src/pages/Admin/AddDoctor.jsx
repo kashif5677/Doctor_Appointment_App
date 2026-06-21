@@ -28,6 +28,23 @@ function AddDoctor() {
         return toast.error('Please upload doctor image')
 
       }
+      const formData = new FormData()
+
+      formData.append('image', docImg)
+      formData.append('name', name)
+      formData.append('email', email)
+      formData.append('password', password)
+      formData.append('experience', experience)
+      formData.append('fees', Number(fees))
+      formData.append('about', about)
+      formData.append('speciality', speciality)
+      formData.append('degree', degree)
+      formData.append('address', JSON.stringify({ line1: address1, line2: address2 }))
+
+      //console log formdata
+      formData.forEach((value, key) => {
+        console.log(`${key}: ${value}`);
+      })
 
     } catch (error) {
 
@@ -63,7 +80,7 @@ function AddDoctor() {
 
             <div className='flex-1 flex flex-col gap-1'>
               <p>Doctor Password</p>
-              <input onChange={(e) => setPassword(e.target.value)} value={email} className="border rounded px-3 py-2" type="password" placeholder="Password" required />
+              <input onChange={(e) => setPassword(e.target.value)} value={password} className="border rounded px-3 py-2" type="password" placeholder="Password" required />
             </div>
             <div className='flex-1 flex flex-col gap-1'>
               <p>Experience</p>
