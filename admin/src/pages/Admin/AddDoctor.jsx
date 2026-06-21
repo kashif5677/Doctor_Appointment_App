@@ -51,6 +51,17 @@ function AddDoctor() {
 
       if (data.success) {
         toast.success(data.message)
+        setDocImg('')
+        setName('')
+        setEmail('')
+        setPassword('')
+        setExperience('1 Year')
+        setFees('')
+        setAbout('')
+        setSpeciality('General Physician')
+        setDegree('')
+        setAdress1('')
+        setAdress2('')
       } else {
         toast.error(data.message)
       }
