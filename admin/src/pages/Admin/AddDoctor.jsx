@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { assets } from '../../assets/assets'
+import { useContext } from 'react'
+import { AdminContext } from '../../context/AdminContext'
 
 function AddDoctor() {
 
@@ -15,8 +17,19 @@ function AddDoctor() {
   const [address1, setAdress1] = useState('')
   const [address2, setAdress2] = useState('')
 
+
+  const { backendUrl, aToken } = useContext(AdminContext)
+  const onSubmitHandler = async (e) => {
+    e.preventDefault()
+    try {
+
+    } catch (error) {
+
+    }
+  }
+
   return (
-    <form className='m-5 w-full'>
+    <form onSubmit={onSubmitHandler} className='m-5 w-full'>
 
       <p className='mb-3 text-lg font-medium'>Add Doctor</p>
 
