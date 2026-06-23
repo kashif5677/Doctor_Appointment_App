@@ -22,6 +22,7 @@ const startServer = async () => {
     app.use('/api/doctor', doctorRouter)
     app.use('/api/user', userRouter)
 
+
     app.get('/', (req, res) => res.status(200).send('hello world !'))
 
     app.listen(port, () => console.log(`listening on localhost:${port}`))
