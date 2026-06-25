@@ -94,7 +94,11 @@ function Appointment() {
 
       const { data } = await axios.post(backendUrl + '/api/user/book-appointment', { docId, slothDate, slotTime }, { headers: { token } })
 
-
+      if (data.success) {
+        toast.success(data.message)
+        getDoctorsData()
+        navigate('/my-appointments')
+      }
 
 
 
