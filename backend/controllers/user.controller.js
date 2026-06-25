@@ -143,15 +143,15 @@ const bookAppointment = async (req, res) => {
         let slots_booked = docData.slots_booked
 
         //checking for slot availability
-        if (slots_booked[slothDate]) {
-            if (slots_booked[slothDate].includes(slotTime)) {
+        if (slots_booked[slotDate]) {
+            if (slots_booked[slotDate].includes(slotTime)) {
                 return res.json({ success: false, message: "Slot is not available" })
             } else {
-                slots_booked[slothDate].push(slotTime)
+                slots_booked[slotDate].push(slotTime)
             }
         } else {
-            slots_booked[slothDate] = []
-            slots_booked[slothDate].push(slotTime)
+            slots_booked[slotDate] = []
+            slots_booked[slotDate].push(slotTime)
         }
 
         const userData = await userModel.findById(userId).select('-password')
@@ -183,4 +183,16 @@ const bookAppointment = async (req, res) => {
     }
 }
 
-export { registerUser, loginUser, getProfile, updateProfile, bookAppointment }
+//API to get user appointments for frontend page
+const listAppointments = async (req, res) => {
+    try {
+        const { userId } = req.body
+        const appointments = await appointmentModel.find({ userId })
+        res.json({ success: true, appointments })
+    } catch (error) {
+        console.log(error)
+        res.json({ success: false, message: error.message })
+    }
+}
+
+export { registerUser, loginUser, getProfile, updateProfile, bookAppointment, listAppointments }
