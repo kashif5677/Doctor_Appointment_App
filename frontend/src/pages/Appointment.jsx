@@ -97,7 +97,7 @@ function Appointment() {
       if (data.success) {
         toast.success(data.message)
         getDoctorsData()
-        navigate('/my-appointments')
+        // navigate('/my-appointments')
       }
 
 
