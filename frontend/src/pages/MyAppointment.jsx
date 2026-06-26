@@ -8,7 +8,12 @@ function MyAppointment() {
   const { backendUrl, token } = useContext(AppContext)
 
   const [appointment, setAppointment] = useState([])
+  const month = ["", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
 
+  const slotDataFormate = (slotDate) => {
+    const dateArray = slotDate.split('_')
+    return dateArray[0] + ' ' + month[Number(dateArray[1])] + ' ' + " " + dateArray[2]
+  }
   const getUserAppointments = async () => {
     try {
 
@@ -19,6 +24,16 @@ function MyAppointment() {
         console.log(data.appointments);
 
       }
+
+    } catch (error) {
+      console.log(error)
+      toast.error(error.message)
+    }
+  }
+
+  const cancelAppointment = async (appointmentId) => {
+    try {
+      console.log(appointmentId);
 
     } catch (error) {
       console.log(error)
@@ -47,12 +62,12 @@ function MyAppointment() {
               <p className='text-zinc-700 font-medium mt-1'>Address:</p>
               <p className='text-xs'>{item.docData.address.line1}</p>
               <p className='text-xs'>{item.docData.address.line2}</p>
-              <p className='text-xs mt-1'><span className='text-xs text-neutral-700 font-medium'>Date & Time:</span> {item.slotDate} | {item.slotTime}</p>
+              <p className='text-xs mt-1'><span className='text-xs text-neutral-700 font-medium'>Date & Time:</span> { }{slotDataFormate(item.slotDate)} | {item.slotTime}</p>
             </div>
             <div></div>
             <div className='flex flex-col gap-2 justify-end'>
               <button className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border hover:bg-primary hover:text-white transition-all duration-300'>Pay Online</button>
-              <button className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-red-600 hover:text-white transition-all duration-300'>Cancel appointment</button>
+              <button onClick={() => cancelAppointment(item._id)} className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-red-600 hover:text-white transition-all duration-300'>Cancel appointment</button>
             </div>
           </div>
         ))}
