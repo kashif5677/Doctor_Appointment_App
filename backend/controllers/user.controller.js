@@ -197,7 +197,7 @@ const listAppointments = async (req, res) => {
 
 //API to cancel the appointment
 
-const cancelAppointment = async () => {
+const cancelAppointment = async (req, res) => {
     try {
         const { userId, appointmentId } = req.body
 
