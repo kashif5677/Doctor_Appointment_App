@@ -106,6 +106,8 @@ const alldoctors = async (req, res) => {
 //API to get all appointments list 
 const appointmentAdmin=async(req,res)=>{
     try{
+
+    }catch(){
         
     }
     
