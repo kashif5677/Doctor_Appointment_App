@@ -107,8 +107,8 @@ const alldoctors = async (req, res) => {
 const appointmentAdmin=async(req,res)=>{
     try{
 
-    }catch(){
-        
+    }catch(error){
+
     }
     
 }
