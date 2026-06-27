@@ -106,10 +106,11 @@ const alldoctors = async (req, res) => {
 //API to get all appointments list 
 const appointmentAdmin = async (req, res) => {
     try {
+        const appointments= await AppointmentModel.find({}).select('-password')
 
     } catch (error) {
         console.log(error)
-        tr
+        
     }
 
 }
