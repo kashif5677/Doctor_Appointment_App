@@ -116,7 +116,7 @@ const appointmentAdmin = async (req, res) => {
 }
 
 //API for apointment cancellation
-const appointmentcancel = async (req, res) => {
+const appointmentCancel = async (req, res) => {
     try {
         const { appointmentId } = req.body
 
@@ -149,4 +149,4 @@ const appointmentcancel = async (req, res) => {
     }
 }
 
-export { addDoctor, loginAdmin, alldoctors, appointmentAdmin, }
+export { addDoctor, loginAdmin, alldoctors, appointmentAdmin, appointmentCancel }
