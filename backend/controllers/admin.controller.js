@@ -112,9 +112,8 @@ const appointmentAdmin = async (req, res) => {
     } catch (error) {
         console.log(error)
         res.json({ success: false, message: error.message })
-
     }
-
 }
 
+//API for apointment cancelation
 export { addDoctor, loginAdmin, alldoctors, appointmentAdmin }
