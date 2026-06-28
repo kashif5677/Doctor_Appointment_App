@@ -8,7 +8,7 @@ import { changeAvailability } from '../controllers/doctor.controller.js'
 const adminRouter = express.Router()
 
 adminRouter.post('/add-doctor', authAdmin, upload.single('image'), addDoctor)
-adminRouter.post('/login', loginAdmin)
+// adminRouter.post('/login', loginAdmin)
 adminRouter.post('/all-doctors', authAdmin, alldoctors)
 adminRouter.post('/change-availability', authAdmin, changeAvailability)
 adminRouter.get('/all-appointments', authAdmin, appointmentAdmin)
