@@ -116,16 +116,12 @@ const appointmentAdmin = async (req, res) => {
 }
 
 //API for apointment cancellation
-const cancelAppointment = async (req, res) => {
+const appointmentcancel = async (req, res) => {
     try {
-        const { userId, appointmentId } = req.body
+        const { appointmentId } = req.body
 
         const appointmentData = await appointmentModel.findById(appointmentId)
         console.log("appointmentData:", appointmentData)
-        //verify appointment user
-        if (appointmentData.userId !== userId) {
-            return res.json({ success: false, message: "You are not authorized to cancel this appointment" })
-        }
 
         await appointmentModel.findByIdAndUpdate(appointmentId, { cancelled: true })
 
@@ -153,4 +149,4 @@ const cancelAppointment = async (req, res) => {
     }
 }
 
-export { addDoctor, loginAdmin, alldoctors, appointmentAdmin }
+export { addDoctor, loginAdmin, alldoctors, appointmentAdmin, }
