@@ -149,4 +149,14 @@ const appointmentCancel = async (req, res) => {
     }
 }
 
+//API to get dashboard data for admin panel
+const adminDashboard = async () => {
+    try {
+
+    } catch (error) {
+        console.log(error)
+        res.json({ success: false, message: error.message })
+    }
+}
+
 export { addDoctor, loginAdmin, alldoctors, appointmentAdmin, appointmentCancel }
