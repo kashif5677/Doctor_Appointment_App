@@ -36,7 +36,6 @@ function Login() {
                     console.log(data.token)
                 } else {
                     console.log(data.message);
-
                     toast.error(data.message)
                 }
             }
