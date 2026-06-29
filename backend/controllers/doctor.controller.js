@@ -29,5 +29,19 @@ const doctorList = async (req, res) => {
     }
 }
 
+// API for doctor Login
+const loginDoctor = async (req, res) => {
+    try {
+        const { email, password } = req.body
+        const doctor = await doctorModel.findOne({ email })
+
+        if (!doctor) {
+            res.json({ success: false, message: "Doctor not found" })
+        }
+    } catch (error) {
+        console.log(error)
+        res.json({ success: false, message: error.message })
+    }
+}
 
 export { changeAvailability, doctorList }

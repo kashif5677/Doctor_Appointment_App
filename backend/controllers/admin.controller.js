@@ -94,7 +94,7 @@ const loginAdmin = async (req, res) => {
 
 const alldoctors = async (req, res) => {
     try {
-        const doctors = await DoctorModel.find({}).select('-password')
+        const doctors = await doctorModel.find({}).select('-password')
         res.json({ success: true, doctors })
 
     } catch (error) {
@@ -151,7 +151,7 @@ const appointmentCancel = async (req, res) => {
 }
 
 //API to get dashboard data for admin panel
-const adminDashboard = async (req,res) => {
+const adminDashboard = async (req, res) => {
     try {
 
         const doctors = await doctorModel.find({})
