@@ -8,7 +8,7 @@ function MyAppointment() {
 
   const { backendUrl, token, getDoctorsData } = useContext(AppContext)
   const [appointment, setAppointment] = useState([])
- 
+
 
   const navigate = useNavigate()
   const getUserAppointments = async () => {
@@ -109,7 +109,7 @@ function MyAppointment() {
               <p className='text-zinc-700 font-medium mt-1'>Address:</p>
               <p className='text-xs'>{item.docData.address.line1}</p>
               <p className='text-xs'>{item.docData.address.line2}</p>
-              <p className='text-xs mt-1'><span className='text-xs text-neutral-700 font-medium'>Date & Time:</span> { }{slotDataFormate(item.slotDate)} | {item.slotTime}</p>
+              <p className='text-xs mt-1'><span className='text-xs text-neutral-700 font-medium'>Date & Time:</span> </p>
             </div>
             <div></div>
             <div className='flex flex-col gap-2 justify-end'>
