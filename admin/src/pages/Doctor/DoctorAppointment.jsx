@@ -2,16 +2,16 @@ import React, { useContext, useEffect } from 'react'
 import { DoctorContext } from '../../context/DoctorContext'
 import { AppContext } from '../../context/AppContext'
 import { assets } from '../../assets/assets'
+import axios from 'axios'
 
 function DoctorAppointment() {
 
-  const { dToken, appointments, getAppointments } = useContext(DoctorContext)
+  const { dToken, appointments, getAppointments, cancelAppointment, completeAppointment } = useContext(DoctorContext)
 
   const { calculateAge, slotDateFormate, currency } = useContext(AppContext)
 
   useEffect(() => {
     if (dToken) {
-
       getAppointments()
     }
   }, [dToken])
@@ -45,15 +45,22 @@ function DoctorAppointment() {
                   {item.payment ? 'online' : 'cash'}
                 </p>
               </div>
-              <p>
+              <p className='max-sm:hidden'>
                 {calculateAge(item.userData.dob)}
               </p>
               <p>{slotDateFormate(item.slotDate)},{item.slotTime}</p>
               <p>{currency}{item.amount}</p>
-              <div>
-                <img src={assets.cancel_icon} alt="" />
-                <img src={assets.tick_icon} alt="" />
-              </div>
+              {
+                item.cancelled
+                  ? <p className='text-red-400 text-xs font-medium'>Cancelled</p>
+                  : item.isCompleted
+                    ? <p className='text-green-500 text-xs font-medium'>Completed</p>
+                    : <div className='flex'>
+                      <img onClick={() => cancelAppointment(item._id)} className='w-10 cursor-pointer' src={assets.cancel_icon} alt="" />
+                      <img onClick={() => completeAppointment(item._id)} className='w-10 cursor-pointer' src={assets.tick_icon} alt="" />
+                    </div>
+              }
+
             </div>
           ))
         }
