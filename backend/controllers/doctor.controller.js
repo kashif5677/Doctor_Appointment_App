@@ -135,7 +135,7 @@ const doctorDashboard = async (req, res) => {
 
         appointments.map((item) => {
             if (item.isCompleted || item.payment) {
-                earnings += item.price
+                earnings += item.amount
             }
         })
 

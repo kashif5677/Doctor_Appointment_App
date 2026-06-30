@@ -11,6 +11,7 @@ function Dashboard() {
 
   useEffect(() => {
     getDashData()
+
   }, [aToken])
 
   return dashData && (
