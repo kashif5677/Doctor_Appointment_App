@@ -8,7 +8,7 @@ export const AppContext = createContext()
 function AppContextProvider(props) {
 
   const currencySymbol = '₹';
-  const backendUrl = import.meta.env.VITE_BACKEND_URL
+  const backendUrl = 'https://doctor-appointment-backend-cxi7.onrender.com'
 
   const [doctors, setDoctors] = useState([])
   const [token, setToken] = useState(() => {
