@@ -6,7 +6,7 @@ import { assets } from '../../assets/assets'
 function AllApointment() {
 
   const { aToken, appointments, getAllAppointments, cancelAppointment } = useContext(AdminContext)
-  const { calculateAge, slotDataFormate, currency } = useContext(AppContext)
+  const { calculateAge, slotDateFormate, currency } = useContext(AppContext)
 
   useEffect(() => {
     if (aToken) {
@@ -36,7 +36,7 @@ function AllApointment() {
               <p>{item.userData.name}</p>
             </div>
             <p className='max-sm:hidden'>{calculateAge(item.userData.dob)}</p>
-            <p>{slotDataFormate(item.slotDate)},{item.slotTime}</p>
+            <p>{slotDateFormate(item.slotDate)},{item.slotTime}</p>
             <div className='flex items-center gap-2'>
               <img className='w-8 rounded-full bg-gray-200' src={item.docData.image} alt="" />
               <p>{item.docData.name}</p>
@@ -45,9 +45,9 @@ function AllApointment() {
             {item.cancelled
               ? <p className='text-red-400 text-xs font-medium'>Cancelled</p>
               :
-                  item.isCompleted
-                  ? <p className='text-green-500 text-xs font-medium'>completed</p>
-                  : <img onClick={() => cancelAppointment(item._id)} className='w-10 cursor-pointer' src={assets.cancel_icon} alt="" />
+              item.isCompleted
+                ? <p className='text-green-500 text-xs font-medium'>completed</p>
+                : <img onClick={() => cancelAppointment(item._id)} className='w-10 cursor-pointer' src={assets.cancel_icon} alt="" />
             }
           </div>
         ))}
