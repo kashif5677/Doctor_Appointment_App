@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 function MyAppointment() {
 
-  const { backendUrl, token, getDoctorsData } = useContext(AppContext)
+  const { backendUrl, token, getDoctorsData, slotDateFormate } = useContext(AppContext)
   const [appointment, setAppointment] = useState([])
 
 
@@ -109,14 +109,17 @@ function MyAppointment() {
               <p className='text-zinc-700 font-medium mt-1'>Address:</p>
               <p className='text-xs'>{item.docData.address.line1}</p>
               <p className='text-xs'>{item.docData.address.line2}</p>
-              <p className='text-xs mt-1'><span className='text-xs text-neutral-700 font-medium'>Date & Time:</span> </p>
+              <p className='text-xs mt-1'><span className='text-xs text-neutral-700 font-medium'>Date & Time:{slotDateFormate(item.slotDate)},{item.slotTime}</span> </p>
             </div>
             <div></div>
             <div className='flex flex-col gap-2 justify-end'>
-              {!item.cancelled && item.payment && <button className="sm:min-w-58 py-2 border border-green-500 rounded text-green-700">Payment Done</button>}
-              {!item.cancelled && !item.payment && <button onClick={() => appointmentRazorpay(item._id)} className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border hover:bg-primary hover:text-white transition-all duration-300'>Pay Online</button>}
-              {!item.cancelled && <button onClick={() => cancelAppointment(item._id)} className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-red-600 hover:text-white transition-all duration-300'>Cancel appointment</button>}
-              {item.cancelled && <button className="sm:min-w-58 py-2 border border-red-500 rounded text-red-700">Appointment Cancelled</button>}
+              {!item.cancelled && item.payment && !item.isCompleted && <button className="sm:min-w-58 py-2 border border-green-500 rounded text-green-700">Payment Done</button>}
+              {!item.cancelled && !item.payment && !item.isCompleted && <button onClick={() => appointmentRazorpay(item._id)} className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border hover:bg-primary hover:text-white transition-all duration-300'>Pay Online</button>}
+              {!item.cancelled && !item.isCompleted && <button onClick={() => cancelAppointment(item._id)} className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-red-600 hover:text-white transition-all duration-300'>Cancel appointment</button>}
+              {item.cancelled && !item.isCompleted && <button className="sm:min-w-58 py-2 border border-red-500 rounded text-red-700">Appointment Cancelled</button>}
+              {
+                item.isCompleted && <button className='sm:min-w-58 py-2 border border-green-500 rounded text-green-700'>Completed</button>
+              }
             </div>
           </div>
         ))}
