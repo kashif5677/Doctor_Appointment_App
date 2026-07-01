@@ -32,21 +32,21 @@ const DoctorProfile = () => {
             <p className='text-sm text-gray-600 max-w-[700px] mt-1'>{profileData.about}</p>
           </div>
 
-          <p>Appointment fee: <span>{currency}{profileData.fees}</span></p>
-          <div>
+          <p className='text-gray-600 font-medium mt-4'>Appointment fee: <span className="textgray-800">{currency}{profileData.fees}</span></p>
+          <div className='flex gap-2 py-2'>
             <p>Address:</p>
-            <p>
+            <p className='text-sm'>
               {profileData.address.line1}<br />
               {profileData.address.line2}
             </p>
           </div>
 
-          <div>
+          <div className='flex gap-1 pt-2'>
             <input type="checkbox" name="" id="" />
             <label htmlFor=''>Available</label>
           </div>
 
-          <button>Edit</button>
+          <button className='px-4 py-1 border border-primary rounded-full mt-5 hover:bg-primary hover:text-white transition-all'>Edit</button>
 
         </div>
       </div>
