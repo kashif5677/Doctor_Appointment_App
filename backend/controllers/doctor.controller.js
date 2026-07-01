@@ -177,7 +177,7 @@ const doctorProfile = async (req, res) => {
 
 }
 //API to update profile data from Doctor Panel
-const updateDoctorProfile = async () => {
+const updateDoctorProfile = async (req, res) => {
     try {
         const { docId, fees, address, available } = req.body
 
